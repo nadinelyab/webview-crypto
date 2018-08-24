@@ -5,8 +5,8 @@ declare var require: any;
 const serializeError: any = require("serialize-error");
 
 class WebViewWorker {
-  constructor(private sendToMain: (message: string) => void) {
-    sendToMain("We are ready!");
+  constructor(private sendToMain: (message: string, domain: string) => void) {
+    sendToMain("We are ready!", '*');
   }
 
   async onMainMessage (message) {
@@ -55,10 +55,10 @@ class WebViewWorker {
         id: data.id,
         reason: `stringify error ${e}`
       };
-      this.sendToMain(JSON.stringify(newData));
+      this.sendToMain(JSON.stringify(newData), '*');
       return;
     }
-    this.sendToMain(message);
+    this.sendToMain(message, '*');
   }
 }
 
