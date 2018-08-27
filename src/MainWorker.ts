@@ -154,7 +154,7 @@ export default class MainWorker {
     stringify(payloadObject, waitForArrayBufferView)
       .then((message) => {
         if (this.readyToSend) {
-          //alert(`sending message ${this.sendToWebView}`);
+          console.log(this.sendToWebView);
           this.sendToWebView(message);
         } else {
           this.toSend.push(message);
