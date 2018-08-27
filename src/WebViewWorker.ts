@@ -20,14 +20,13 @@ class WebViewWorker {
       return;
     }
     let value;
-
+    alert(`onmainMessage, ${method}, ${args}`)
     try {
       if (method === "getRandomValues") {
         value = crypto.getRandomValues(args[0]);
 
       } else {
         const methodName = method.split(".")[1];
-        console.log(methodName, args);
         value = await subtle()[methodName].apply(subtle(), args);
 
         // if we import a crypto key, we want to save how we imported it
