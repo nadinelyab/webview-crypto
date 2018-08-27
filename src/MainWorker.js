@@ -166,7 +166,7 @@ var MainWorker = (function () {
         serializeBinary_1.stringify(payloadObject, waitForArrayBufferView)
             .then(function (message) {
             if (_this.readyToSend) {
-                alert("sending message " + _this.sendToWebView);
+                alert("sending message " + _this.sendToWebView + ", message: " + message);
                 _this.sendToWebView(message);
             }
             else {
