@@ -39,12 +39,14 @@ export async function toObjects(serializers: Serializer<any, any>[], o: any): Pr
 }
 
 export async function fromObjects(serializers: Serializer<any, any>[], o: any): Promise<any> {
+  console.log('what is o?', o)
   if (typeof o !== "object") {
     return o;
   }
 
   if (isSerialized(o)) {
     const value = await fromObjects(serializers, o.value);
+    console.log('got value', value);
     const serializer = find(serializers, ["id", o.__serializer_id]);
     if (serializer.fromObject) {
       return serializer.fromObject(value);

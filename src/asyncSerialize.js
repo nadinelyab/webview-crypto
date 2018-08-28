@@ -104,6 +104,7 @@ function fromObjects(serializers, o) {
         return __generator(this, function (_e) {
             switch (_e.label) {
                 case 0:
+                    console.log('what is o?', o);
                     if (typeof o !== "object") {
                         return [2 /*return*/, o];
                     }
@@ -112,6 +113,7 @@ function fromObjects(serializers, o) {
                     return [4 /*yield*/, fromObjects(serializers, o.value)];
                 case 1:
                     value = _e.sent();
+                    console.log('got value', value);
                     serializer = find(serializers, ["id", o.__serializer_id]);
                     if (serializer.fromObject) {
                         return [2 /*return*/, serializer.fromObject(value)];
