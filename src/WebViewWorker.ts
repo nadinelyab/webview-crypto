@@ -20,7 +20,6 @@ class WebViewWorker {
       return;
     }
     let value;
-    alert(`onmainMessage, ${method}, ${args}`)
     try {
       if (method === "getRandomValues") {
         value = crypto.getRandomValues(args[0]);
