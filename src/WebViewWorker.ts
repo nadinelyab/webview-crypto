@@ -27,7 +27,6 @@ class WebViewWorker {
       } else {
         const methodName = method.split(".")[1];
         value = await subtle()[methodName].apply(subtle(), args);
-        console.log('Value returned', value, methodName, args)
 
         // if we import a crypto key, we want to save how we imported it
         // so we can send that back and re-create the key later

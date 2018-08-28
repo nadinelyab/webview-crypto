@@ -112,6 +112,7 @@ export default class MainWorker {
       return;
     }
     parse(message).then(({id, value, reason}) => {
+      console.log('parse completed')
       if (this.debug) {
         console.log("[webview-crypto] Received message:", JSON.stringify({
           id,
@@ -154,7 +155,6 @@ export default class MainWorker {
     stringify(payloadObject, waitForArrayBufferView)
       .then((message) => {
         if (this.readyToSend) {
-          console.log(this.sendToWebView);
           this.sendToWebView(message);
         } else {
           this.toSend.push(message);

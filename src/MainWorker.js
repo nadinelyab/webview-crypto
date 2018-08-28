@@ -122,6 +122,7 @@ var MainWorker = (function () {
         }
         serializeBinary_1.parse(message).then(function (_a) {
             var id = _a.id, value = _a.value, reason = _a.reason;
+            console.log('parse completed');
             if (_this.debug) {
                 console.log("[webview-crypto] Received message:", JSON.stringify({
                     id: id,
@@ -166,7 +167,6 @@ var MainWorker = (function () {
         serializeBinary_1.stringify(payloadObject, waitForArrayBufferView)
             .then(function (message) {
             if (_this.readyToSend) {
-                console.log(_this.sendToWebView);
                 _this.sendToWebView(message);
             }
             else {
