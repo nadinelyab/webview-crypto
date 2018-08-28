@@ -46,7 +46,6 @@ export async function fromObjects(serializers: Serializer<any, any>[], o: any): 
 
   if (isSerialized(o)) {
     const value = await fromObjects(serializers, o.value);
-    console.log('got value', value);
     const serializer = find(serializers, ["id", o.__serializer_id]);
     if (serializer.fromObject) {
       return serializer.fromObject(value);

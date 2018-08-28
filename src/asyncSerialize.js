@@ -113,7 +113,6 @@ function fromObjects(serializers, o) {
                     return [4 /*yield*/, fromObjects(serializers, o.value)];
                 case 1:
                     value = _e.sent();
-                    console.log('got value', value);
                     serializer = find(serializers, ["id", o.__serializer_id]);
                     if (serializer.fromObject) {
                         return [2 /*return*/, serializer.fromObject(value)];
