@@ -123,6 +123,7 @@ var MainWorker = (function () {
             }
             return;
         }
+        console.log('going to parse');
         serializeBinary_1.parse(message).then(function (_a) {
             var id = _a.id, value = _a.value, reason = _a.reason;
             console.log('parse completed');

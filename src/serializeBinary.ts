@@ -9,6 +9,7 @@ export async function parse(text: string): Promise<any> {
   // need decodeURIComponent so binary strings are transfered properly
   const deocodedText = decodeURIComponent(text);
   const objects = JSON.parse(deocodedText);
+  console.log('objects', objects);
   return await fromObjects(serializers(true), objects);
 }
 export async function stringify(value: any, waitForArrayBufferView = true): Promise<string> {

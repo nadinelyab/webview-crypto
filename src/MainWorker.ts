@@ -114,6 +114,7 @@ export default class MainWorker {
       }
       return;
     }
+    console.log('going to parse');
     parse(message).then(({id, value, reason}) => {
       console.log('parse completed')
       if (this.debug) {

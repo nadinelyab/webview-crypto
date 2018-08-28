@@ -53,6 +53,7 @@ function parse(text) {
                 case 0:
                     deocodedText = decodeURIComponent(text);
                     objects = JSON.parse(deocodedText);
+                    console.log('objects', objects);
                     return [4 /*yield*/, asyncSerialize_1.fromObjects(serializers(true), objects)];
                 case 1: return [2 /*return*/, _a.sent()];
             }
