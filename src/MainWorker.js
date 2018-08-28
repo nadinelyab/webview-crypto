@@ -58,7 +58,6 @@ var MainWorker = (function () {
     }
     Object.defineProperty(MainWorker.prototype, "crypto", {
         get: function () {
-            console.log('calling crypto');
             var callMethod = this.callMethod;
             return {
                 subtle: this.subtle,
@@ -72,7 +71,6 @@ var MainWorker = (function () {
     Object.defineProperty(MainWorker.prototype, "subtle", {
         get: function () {
             var _this = this;
-            console.log('calling subtle');
             var s = {};
             var _loop_1 = function (m) {
                 s[m] = function () {
@@ -93,7 +91,6 @@ var MainWorker = (function () {
         configurable: true
     });
     MainWorker.prototype.getRandomValues = function (array) {
-        console.log('calling get random values');
         var promise = this.callMethod("getRandomValues", [array], false);
         // make the _promise not enumerable so it isn't JSON stringified,
         // which could lead to an infinite loop with Angular's zone promises
@@ -123,10 +120,8 @@ var MainWorker = (function () {
             }
             return;
         }
-        console.log('going to parse');
         serializeBinary_1.parse(message).then(function (_a) {
             var id = _a.id, value = _a.value, reason = _a.reason;
-            console.log('parse completed');
             if (_this.debug) {
                 console.log("[webview-crypto] Received message:", JSON.stringify({
                     id: id,

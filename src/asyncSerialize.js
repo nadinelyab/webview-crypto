@@ -104,7 +104,6 @@ function fromObjects(serializers, o) {
         return __generator(this, function (_e) {
             switch (_e.label) {
                 case 0:
-                    console.log('what is o?', o);
                     if (typeof o !== "object") {
                         return [2 /*return*/, o];
                     }

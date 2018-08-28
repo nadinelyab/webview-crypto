@@ -39,7 +39,6 @@ export async function toObjects(serializers: Serializer<any, any>[], o: any): Pr
 }
 
 export async function fromObjects(serializers: Serializer<any, any>[], o: any): Promise<any> {
-  console.log('what is o?', o)
   if (typeof o !== "object") {
     return o;
   }
