@@ -58,6 +58,7 @@ var MainWorker = (function () {
     }
     Object.defineProperty(MainWorker.prototype, "crypto", {
         get: function () {
+            console.log('calling crypto');
             var callMethod = this.callMethod;
             return {
                 subtle: this.subtle,
@@ -71,6 +72,7 @@ var MainWorker = (function () {
     Object.defineProperty(MainWorker.prototype, "subtle", {
         get: function () {
             var _this = this;
+            console.log('calling subtle');
             var s = {};
             var _loop_1 = function (m) {
                 s[m] = function () {
@@ -91,6 +93,7 @@ var MainWorker = (function () {
         configurable: true
     });
     MainWorker.prototype.getRandomValues = function (array) {
+        console.log('calling get random values');
         var promise = this.callMethod("getRandomValues", [array], false);
         // make the _promise not enumerable so it isn't JSON stringified,
         // which could lead to an infinite loop with Angular's zone promises

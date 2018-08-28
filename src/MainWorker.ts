@@ -63,6 +63,7 @@ export default class MainWorker {
   constructor(private sendToWebView: (message: string) => void, private debug = false) {}
 
   get crypto(): Crypto {
+    console.log('calling crypto')
     const callMethod = this.callMethod;
     return ({
       subtle: this.subtle,
@@ -72,6 +73,7 @@ export default class MainWorker {
   }
 
   private get subtle(): SubtleCrypto {
+    console.log('calling subtle')
     const s = {};
     for (let m of SUBTLE_METHODS) {
       s[m] = (...args) => {
@@ -82,6 +84,7 @@ export default class MainWorker {
   }
 
   private getRandomValues (array: ArrayBufferViewWithPromise): ArrayBufferViewWithPromise {
+    console.log('calling get random values');
     const promise = this.callMethod("getRandomValues", [array], false);
 
     // make the _promise not enumerable so it isn't JSON stringified,
