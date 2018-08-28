@@ -120,10 +120,8 @@ var MainWorker = (function () {
             }
             return;
         }
-        console.log('message', message);
         serializeBinary_1.parse(message).then(function (_a) {
             var id = _a.id, value = _a.value, reason = _a.reason;
-            console.log('finished parsing', id, value, reason);
             if (_this.debug) {
                 console.log("[webview-crypto] Received message:", JSON.stringify({
                     id: id,

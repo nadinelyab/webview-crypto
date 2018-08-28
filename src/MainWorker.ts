@@ -111,9 +111,7 @@ export default class MainWorker {
       }
       return;
     }
-    console.log('message', message)
     parse(message).then(({id, value, reason}) => {
-      console.log('finished parsing', id, value, reason)
       if (this.debug) {
         console.log("[webview-crypto] Received message:", JSON.stringify({
           id,
