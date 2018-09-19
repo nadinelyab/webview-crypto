@@ -18,15 +18,15 @@ function isSerialized(object: any): object is Serialized {
 }
 
 export async function toObjects(serializers: Serializer<any, any>[], o: any): Promise<any> {
-  console.log('in toObjects', o, typeof o)
   if (typeof o !== "object") {
     return o;
   }
 
   const serializer = find(serializers, s => s.isType(o));
   if (serializer) {
-    console.log('serializer')
+    console.log('serializer', o)
     const value = serializer.toObject ? await serializer.toObject(o) : o;
+    console.log('done!')
     return {
       __serializer_id: serializer.id,
       value: await toObjects(serializers, value)
