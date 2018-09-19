@@ -93,6 +93,7 @@ var ArrayBufferSerializer = {
     // modified to use Int8Array so that we can hold odd number of bytes
     toObject: function (ab) { return __awaiter(_this, void 0, void 0, function () {
         return __generator(this, function (_a) {
+            console.log('arraybufferSerializer toObject');
             return [2 /*return*/, String.fromCharCode.apply(null, new Int8Array(ab))];
         });
     }); },
