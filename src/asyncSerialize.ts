@@ -24,16 +24,13 @@ export async function toObjects(serializers: Serializer<any, any>[], o: any): Pr
 
   const serializer = find(serializers, s => s.isType(o));
   if (serializer) {
-    console.log('serializer', o)
     const value = serializer.toObject ? await serializer.toObject(o) : o;
-    console.log('done!')
     return {
       __serializer_id: serializer.id,
       value: await toObjects(serializers, value)
     } as Serialized;
   }
 
-  console.log('for loop')
   const newO = o instanceof Array ? [] : {};
   for (let atr in o) {
     newO[atr] = await toObjects(serializers, o[atr]);

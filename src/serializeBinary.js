@@ -66,13 +66,10 @@ function stringify(value, waitForArrayBufferView) {
         var serialized, message;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0:
-                    console.log('serializing', value);
-                    return [4 /*yield*/, asyncSerialize_1.toObjects(serializers(waitForArrayBufferView), value)];
+                case 0: return [4 /*yield*/, asyncSerialize_1.toObjects(serializers(waitForArrayBufferView), value)];
                 case 1:
                     serialized = _a.sent();
                     message = JSON.stringify(serialized);
-                    //console.log('going to encodeURI', message)
                     return [2 /*return*/, encodeURIComponent(message)];
             }
         });

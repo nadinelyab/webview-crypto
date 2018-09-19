@@ -55,7 +55,6 @@ function toObjects(serializers, o) {
                     serializer = find(serializers, function (s) { return s.isType(o); });
                     if (!serializer)
                         return [3 /*break*/, 5];
-                    console.log('serializer', o);
                     if (!serializer.toObject)
                         return [3 /*break*/, 2];
                     return [4 /*yield*/, serializer.toObject(o)];
@@ -67,7 +66,6 @@ function toObjects(serializers, o) {
                     _g.label = 3;
                 case 3:
                     value = _a;
-                    console.log('done!');
                     _b = {
                         __serializer_id: serializer.id
                     };
@@ -75,7 +73,6 @@ function toObjects(serializers, o) {
                 case 4: return [2 /*return*/, (_b.value = _g.sent(),
                         _b)];
                 case 5:
-                    console.log('for loop');
                     newO = o instanceof Array ? [] : {};
                     _c = [];
                     for (_d in o)
