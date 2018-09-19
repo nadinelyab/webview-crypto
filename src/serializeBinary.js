@@ -92,9 +92,14 @@ var ArrayBufferSerializer = {
     // from https://developers.google.com/web/updates/2012/06/How-to-convert-ArrayBuffer-to-and-from-String
     // modified to use Int8Array so that we can hold odd number of bytes
     toObject: function (ab) { return __awaiter(_this, void 0, void 0, function () {
+        var array, str, i;
         return __generator(this, function (_a) {
-            console.log('arraybufferSerializer toObject');
-            return [2 /*return*/, String.fromCharCode.apply(null, new Int8Array(ab))];
+            array = new Int8Array(ab);
+            str = "";
+            for (i = 0; i < array.length; i++) {
+                str += String.fromCharCode(array[i]);
+            }
+            return [2 /*return*/, str];
         });
     }); },
     fromObject: function (data) { return __awaiter(_this, void 0, void 0, function () {
