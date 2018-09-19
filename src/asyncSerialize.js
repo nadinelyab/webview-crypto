@@ -49,12 +49,16 @@ function toObjects(serializers, o) {
         return __generator(this, function (_g) {
             switch (_g.label) {
                 case 0:
+                    console.log('in toObjects');
                     if (typeof o !== "object") {
+                        console.log('returning o');
                         return [2 /*return*/, o];
                     }
                     serializer = find(serializers, function (s) { return s.isType(o); });
+                    console.log('tried to find serializer');
                     if (!serializer)
                         return [3 /*break*/, 5];
+                    console.log('have serializer');
                     if (!serializer.toObject)
                         return [3 /*break*/, 2];
                     return [4 /*yield*/, serializer.toObject(o)];
@@ -66,6 +70,7 @@ function toObjects(serializers, o) {
                     _g.label = 3;
                 case 3:
                     value = _a;
+                    console.log('got value');
                     _b = {
                         __serializer_id: serializer.id
                     };
@@ -73,6 +78,7 @@ function toObjects(serializers, o) {
                 case 4: return [2 /*return*/, (_b.value = _g.sent(),
                         _b)];
                 case 5:
+                    console.log('no serializer');
                     newO = o instanceof Array ? [] : {};
                     _c = [];
                     for (_d in o)
