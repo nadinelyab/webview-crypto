@@ -71,9 +71,8 @@ function stringify(value, waitForArrayBufferView) {
                     return [4 /*yield*/, asyncSerialize_1.toObjects(serializers(waitForArrayBufferView), value)];
                 case 1:
                     serialized = _a.sent();
-                    console.log('going to stringify', serialized);
                     message = JSON.stringify(serialized);
-                    console.log('going to encodeURI', message);
+                    //console.log('going to encodeURI', message)
                     return [2 /*return*/, encodeURIComponent(message)];
             }
         });

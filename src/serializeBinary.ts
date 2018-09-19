@@ -14,10 +14,10 @@ export async function parse(text: string): Promise<any> {
 export async function stringify(value: any, waitForArrayBufferView = true): Promise<string> {
   console.log('serializing', value)
   const serialized = await toObjects(serializers(waitForArrayBufferView), value);
-  console.log('going to stringify', serialized)
+  //console.log('going to stringify', serialized)
   // need encodeURIComponent so binary strings are transfered properly
   const message = JSON.stringify(serialized);
-  console.log('going to encodeURI', message)
+  //console.log('going to encodeURI', message)
   return encodeURIComponent(message);
 }
 
