@@ -151,11 +151,8 @@ export default class MainWorker {
         payloadObject
       }));
     };
-    const t0 = performance.now()
     stringify(payloadObject, waitForArrayBufferView)
       .then((message) => {
-        const t1 = performance.now()
-        console.log('time to stringify', t1 - t0)
         if (this.readyToSend) {
           this.sendToWebView(message);
         } else {
