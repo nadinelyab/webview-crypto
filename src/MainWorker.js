@@ -163,8 +163,11 @@ var MainWorker = (function () {
             }));
         }
         ;
+        var t0 = performance.now();
         serializeBinary_1.stringify(payloadObject, waitForArrayBufferView)
             .then(function (message) {
+            var t1 = performance.now();
+            console.log('time to stringify', t1 - t0);
             if (_this.readyToSend) {
                 _this.sendToWebView(message);
             }

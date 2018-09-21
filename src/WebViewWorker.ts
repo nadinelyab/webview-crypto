@@ -12,7 +12,10 @@ class WebViewWorker {
   async onMainMessage (message) {
     let id, method, args;
     try {
+      const time0 = performance.now();
       ({id, method, args} = await parse(message));
+      const time1 = performance.now();
+        console.log('time to parse message', time0 - time1)
     } catch (e) {
       await this.send({
         reason: `Couldn't parse data: ${e}`
@@ -25,6 +28,7 @@ class WebViewWorker {
         value = crypto.getRandomValues(args[0]);
 
       } else {
+        const t0 = performance.now()
         const methodName = method.split(".")[1];
         value = await subtle()[methodName].apply(subtle(), args);
         // if we import a crypto key, we want to save how we imported it
@@ -35,6 +39,8 @@ class WebViewWorker {
             keyData: args[1]
           }
         }
+        const t1 = performance.now()
+          console.log('time to apply method', methodName, t1 - t0)
       }
     } catch (e) {
       await this.send({id, reason: (serializeError as any)(e)});
