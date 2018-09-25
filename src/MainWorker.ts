@@ -124,8 +124,8 @@ export default class MainWorker {
         return;
       }
       const {resolve, reject} = this.messages[id];
-      console.log(this.messages, resolve)
       if (value) {
+        console.log('going to resolve')
         resolve(value);
       } else {
         reject(reason);
