@@ -136,7 +136,8 @@ var MainWorker = (function () {
             }
             var _b = _this.messages[id], resolve = _b.resolve, reject = _b.reject;
             if (value) {
-                console.log('going to resolve');
+                console.log('resolve function', resolve);
+                console.log('value', value);
                 resolve(value);
             }
             else {
