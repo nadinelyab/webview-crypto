@@ -124,6 +124,7 @@ export default class MainWorker {
         return;
       }
       const {resolve, reject} = this.messages[id];
+      console.log(this.messages, resolve)
       if (value) {
         resolve(value);
       } else {
