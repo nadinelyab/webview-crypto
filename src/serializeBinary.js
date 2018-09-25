@@ -52,6 +52,7 @@ function parse(text) {
             switch (_a.label) {
                 case 0:
                     deocodedText = decodeURIComponent(text);
+                    console.log('deocodedText', deocodedText);
                     objects = JSON.parse(deocodedText);
                     return [4 /*yield*/, asyncSerialize_1.fromObjects(serializers(true), objects)];
                 case 1: return [2 /*return*/, _a.sent()];

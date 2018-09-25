@@ -8,6 +8,7 @@ declare const WebViewBridge: any;
 export async function parse(text: string): Promise<any> {
   // need decodeURIComponent so binary strings are transfered properly
   const deocodedText = decodeURIComponent(text);
+  console.log('deocodedText', deocodedText)
   const objects = JSON.parse(deocodedText);
   return await fromObjects(serializers(true), objects);
 }
