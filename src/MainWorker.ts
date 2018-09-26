@@ -131,6 +131,7 @@ export default class MainWorker {
       } else {
         reject(reason);
       }
+      console.log('after resolve')
       delete this.messages[id];
     }).catch((reason) => {
       console.warn("[webview-crypto] error in `parse` of message:", JSON.stringify(message), "reason:", JSON.stringify(serializeError(reason)));

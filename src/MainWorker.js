@@ -143,6 +143,7 @@ var MainWorker = (function () {
             else {
                 reject(reason);
             }
+            console.log('after resolve');
             delete _this.messages[id];
         }).catch(function (reason) {
             console.warn("[webview-crypto] error in `parse` of message:", JSON.stringify(message), "reason:", JSON.stringify(serializeError(reason)));
